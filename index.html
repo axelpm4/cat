@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Site Troll Cat</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: url('assets/catground.jpg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        color: white;
+        text-align: center;
+        transition: background-size 0.2s ease;
+    }
+
+    img {
+        max-width: 400px;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        transition: transform 0.2s ease;
+    }
+
+    button {
+        background: linear-gradient(45deg, #ff0000, #ff6600);
+        color: white;
+        padding: 15px 40px;
+        font-size: 22px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(255, 100, 0, 1);
+    }
+
+    .rotate {
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Effet fond qui part en cacahuète */
+    .crazy-bg {
+        animation: crazy 0.5s infinite alternate;
+    }
+
+    @keyframes crazy {
+        0% { background-size: 100%; filter: hue-rotate(0deg); }
+        25% { background-size: 120%; filter: hue-rotate(90deg); }
+        50% { background-size: 150%; filter: hue-rotate(180deg); }
+        75% { background-size: 120%; filter: hue-rotate(270deg); }
+        100% { background-size: 100%; filter: hue-rotate(360deg); }
+    }
+</style>
+</head>
+<body>
+
+    <img id="catImage" src="assets/cat1.webp" alt="Chat cool">
+    <button onclick="troll()">Clique ici</button>
+
+    <script>
+        function troll() {
+            // Fond qui part en cacahuète
+            document.body.classList.add("crazy-bg");
+
+            // Changer l'image et la faire tourner
+            const img = document.getElementById("catImage");
+            img.src = "assets/cat2.gif";
+            img.classList.add("rotate");
+
+            // Jouer le son
+            const audio = new Audio("assets/soundcat.mp3");
+            audio.play();
+
+            // Redirection après 5 secondes
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>
